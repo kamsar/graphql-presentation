@@ -11,3 +11,11 @@
 .graphiql-container .doc-explorer-title, .graphiql-container .history-title, .graphiql-container .doc-explorer-back {
     overflow: visible !important;
 }
+
+.graphiql-container .CodeMirror {
+    font-size: 24px !important;
+}
+
+.CodeMirror-hints {
+    font-size: 24px !important;
+}

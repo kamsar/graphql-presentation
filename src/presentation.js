@@ -10,6 +10,7 @@ import {
   Slide,
   Text,
   Notes,
+  Link,
   ComponentPlayground
 } from 'spectacle';
 
@@ -114,7 +115,7 @@ export default class Presentation extends React.Component {
           <Text margin="40px 0 0" textColor="tertiary" size={1} bold textAlign="left">
             Kam Figy<br />
             Platform Architect<br />
-            Sitecore
+            <img src="/sitecore.svg" alt="Sitecore Logo" height="100" />
           </Text>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
@@ -138,6 +139,9 @@ export default class Presentation extends React.Component {
             the world's best<br />
             <code>SELECT</code> statement
           </Heading>
+          <Notes>
+            ...but it's not a generic where statement
+          </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
           <Heading fit>
@@ -167,6 +171,7 @@ export default class Presentation extends React.Component {
           </Text>
           <Notes>
             <ul>
+              <li>Suppose you had a REST API that gave you a summary list of articles, and another that gave the details of one article...</li>
               <li>Requests that in a traditional REST API would return everything need not do so.</li>
               <li>Reduced request count</li>
               <li>Improved latency</li>
@@ -193,6 +198,13 @@ export default class Presentation extends React.Component {
             Shut up and show me the code
           </Heading>
           <GraphiQL fetcher={graphiQLFetcher} query={initialQuery} />
+          <Notes>
+            <ul>
+              <li>Basic query/intellisense</li>
+              <li>Query relationships - get film + characters + producers</li>
+              <li>Fragments + multiple queries - get two films by name with same fields</li>
+            </ul>
+          </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
           <Heading fit>
@@ -201,10 +213,17 @@ export default class Presentation extends React.Component {
           <ApolloProvider client={apolloClient}>
             <ComponentPlayground code={apolloBoostExample} scope={ { gql, Query } } />
           </ApolloProvider>
+          <Notes>
+            <ul>
+              <li>Overview existing sample, Apollo, and React</li>
+              <li>Add director to query + react</li>
+              <li>Consider adding characters.name to looping</li>
+            </ul>
+          </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
           <Heading fit>
-            What about CRUD?
+            What about C<strike>R</strike>UD?
           </Heading>
           <Text textColor="primary">
             Mutations &amp; Subscriptions
@@ -218,10 +237,39 @@ export default class Presentation extends React.Component {
             Building GraphQL APIs
           </Heading>
           <Text textColor="primary">
-            GraphQL 
+            <a href="https://launchpad.graphql.com/new" target="_blank" rel="noopener noreferrer" style={ { color: 'white'} }>Apollo Launchpad</a>
           </Text>
           <Notes>
-            Mutations mutate (update, create, delete) from the API graph. They return a query! So you can push data and update your UI in one call!
+            There are GQL servers in almost every major language but since JavaScript is the original one, let's take a quick look at it.<br />
+            Touch on resolvers being useful for aggregation.
+          </Notes>
+        </Slide>
+        <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
+          <Heading fit>
+            What GraphQL is good at
+          </Heading>
+          <List textColor="primary">
+            <ListItem>API Aggregation</ListItem>
+            <ListItem>Flexibility for Frontend Devs/Public APIs</ListItem>
+            <ListItem>Complex data updating</ListItem>
+            <ListItem>Performance in SPAs</ListItem>
+          </List>
+        </Slide>
+        <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
+          <Heading fit>
+            What GraphQL is bad at
+          </Heading>
+          <List textColor="primary">
+            <ListItem>Single-use APIs</ListItem>
+            <ListItem>Generic Predicates (not a <code>WHERE</code> clause)</ListItem>
+            <ListItem>Sites with light JS use</ListItem>
+          </List>
+          <Notes>
+            <ul>
+              <li>Not that great if your API is purpose built and only ever used for one thing, and returns exactly what you need already</li>
+              <li>GraphQL is the best SELECT statement but it does not have a WHERE clause. Filtering is entirely up to your schema and params you define.</li>
+              <li>If a site is mostly a static site that uses only a little JS, there's a significant tax to most GraphQL clients (apollo is 35k gzipped), so it makes sense for JS heavy apps.</li>
+            </ul>
           </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary" textColor="primary">
@@ -229,11 +277,13 @@ export default class Presentation extends React.Component {
             Give your REST API a rest
           </Heading>
           <img src="/rest.gif" width="500" alt="resting cute animals" />
+          <Text textColor="primary" textAlign="left" bold>Resources</Text>
           <List textColor="primary">
-            <ListItem>Amazing tooling</ListItem>
-            <ListItem>Self-documenting</ListItem>
-            <ListItem>Static analysis (ESLint)</ListItem>
+            <ListItem><Link href="https://graphql.org/" textColor="primary">graphql.org</Link></ListItem>
+            <ListItem><Link href="https://www.apollographql.com/" textColor="primary">apollographql.com</Link></ListItem>
+            <ListItem>This deck: github.com/kamsar/graphql-presentation</ListItem>
           </List>
+          <Text textColor="primary" textAlign="left">Find me on Twitter @kamsar</Text>
         </Slide>
       </Deck>
     );
