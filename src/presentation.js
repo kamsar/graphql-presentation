@@ -237,7 +237,7 @@ export default class Presentation extends React.Component {
             Building GraphQL APIs
           </Heading>
           <Text textColor="primary">
-            <a href="https://launchpad.graphql.com/new" target="_blank" rel="noopener noreferrer" style={ { color: 'white'} }>Apollo Launchpad</a>
+            Live demo on <a href="https://glitch.com/edit/#!/jet-cook?path=server.js:6:17" target="_blank" rel="noopener noreferrer" style={ { color: 'white'} }>Glitch</a>
           </Text>
           <Notes>
             There are GQL servers in almost every major language but since JavaScript is the original one, let's take a quick look at it.<br />
