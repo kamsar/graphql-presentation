@@ -115,7 +115,7 @@ export default class Presentation extends React.Component {
           <Text margin="40px 0 0" textColor="tertiary" size={1} bold textAlign="left">
             Kam Figy<br />
             Platform Architect<br />
-            <img src="/sitecore.svg" alt="Sitecore Logo" height="100" />
+            <img src="/Site-Core.svg" alt="Sitecore Logo" height="100" />
           </Text>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
