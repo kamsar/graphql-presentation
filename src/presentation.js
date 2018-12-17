@@ -276,7 +276,7 @@ export default class Presentation extends React.Component {
           <List textColor="primary">
             <ListItem>Single-use APIs</ListItem>
             <ListItem>Generic Predicates (not a generic <code>WHERE</code> clause)</ListItem>
-            <ListItem>Sites with light JS use</ListItem>
+            <ListItem>Sites with light JS use (try <code>urql</code> or fetch)</ListItem>
           </List>
           <Notes>
             <ul>
