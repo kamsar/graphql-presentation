@@ -120,8 +120,14 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
           <Heading fit>
-            WTF is GraphQL?
+            What is GraphQL?
           </Heading>
+          <Notes>
+            <ul>
+              <li>Who has heard of GraphQL?</li>
+              <li>Who's using GraphQL already?</li>
+            </ul>
+          </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
           <Heading>
@@ -130,17 +136,9 @@ export default class Presentation extends React.Component {
             <em>for your API</em>
           </Heading>
           <Notes>
-            Created by Faceboof.
-          </Notes>
-        </Slide>
-        <Slide transition={['slide']} bgColor="secondary">
-          <Heading fit>
-            GraphQL is<br />
-            the world's best<br />
-            <code>SELECT</code> statement
-          </Heading>
-          <Notes>
-            ...but it's not a generic where statement
+            <ul>
+              <li>Created by Facebook in 2012, originally to drive their mobile app.</li>
+            </ul>
           </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
@@ -153,11 +151,22 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide transition={['slide']} bgColor="secondary">
           <Heading fit>
+            GraphQL is<br />
+            the world's best<br />
+            <code>SELECT</code> statement
+          </Heading>
+          <Notes>
+            <p>As the name suggests, you can SELECT from a schema graph, asking only for the part(s) of the graph you need.</p>
+          </Notes>
+        </Slide>
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading fit>
             End Overfetching
           </Heading>
           <img src="/overfetch.png" alt="overfetching" />
           <Notes>
             <ul>
+              <li>Example REST API response vs GraphQL response</li>
               <li>Reduced bandwidth usage</li>
             </ul>
           </Notes>
@@ -171,10 +180,11 @@ export default class Presentation extends React.Component {
           </Text>
           <Notes>
             <ul>
-              <li>Suppose you had a REST API that gave you a summary list of articles, and another that gave the details of one article...</li>
-              <li>Requests that in a traditional REST API would return everything need not do so.</li>
-              <li>Reduced request count</li>
-              <li>Improved latency</li>
+              <li>Example: REST list vs details requests in a loop</li>
+              <li>Reduced HTTP request count</li>
+              <li>Schema stitching - unify backend or legacy APIs</li>
+              <li><code>apollo-link-state</code> - unify frontend and backend state into GraphQL schema</li>
+              <li>Execute ONLY what you need - parts of the graph not queried are not executed</li>
             </ul>
           </Notes>
         </Slide>
@@ -200,12 +210,14 @@ export default class Presentation extends React.Component {
           <GraphiQL fetcher={graphiQLFetcher} query={initialQuery} />
           <Notes>
             <ul>
-              <li>Basic query/intellisense</li>
-              <li>Query relationships - get film + characters + producers</li>
-              <li>Fragments + multiple queries - get two films by name with same fields</li>
+              <li>Docs/types browse</li>
+              <li>Basic query/code completion</li>
+              <li>Query relationships - get film + characters (name, eye color) + producers, show character eye color as enum in docs</li>
+              <li>Fragments + multiple queries - get two films by name with same fields, all films</li>
             </ul>
           </Notes>
         </Slide>
+        {/* TODO: adventurous? toss up Sitecore content schema and show template inheritance - if not talk fragments and interfaces on former slide */}
         <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
           <Heading fit>
             Ok great, but what about in React?
@@ -229,7 +241,10 @@ export default class Presentation extends React.Component {
             Mutations &amp; Subscriptions
           </Text>
           <Notes>
-            Mutations mutate (update, create, delete) from the API graph. They return a query! So you can push data and update your UI in one call!
+            <ul>
+              <li>Mutations mutate the graph. They return a query! So you can push data and update your UI in one call!</li>
+              <li>Subscriptions are a bit experimental, but similar to socket.io or SignalR - real-time data delivered using GraphQL queries</li>
+            </ul>
           </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
@@ -237,11 +252,10 @@ export default class Presentation extends React.Component {
             Building GraphQL APIs
           </Heading>
           <Text textColor="primary">
-            Live demo on <a href="https://glitch.com/edit/#!/jet-cook?path=server.js:6:17" target="_blank" rel="noopener noreferrer" style={ { color: 'white'} }>Glitch</a>
+            Live demo on <a href="https://glitch.com/edit/#!/fepdx-graphql?path=server.js:8:2" target="_blank" rel="noopener noreferrer" style={ { color: 'white'} }>Glitch</a>
           </Text>
           <Notes>
             There are GQL servers in almost every major language but since JavaScript is the original one, let's take a quick look at it.<br />
-            Touch on resolvers being useful for aggregation.
           </Notes>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
@@ -250,9 +264,9 @@ export default class Presentation extends React.Component {
           </Heading>
           <List textColor="primary">
             <ListItem>API Aggregation</ListItem>
-            <ListItem>Flexibility for Frontend Devs/Public APIs</ListItem>
+            <ListItem>Flexibility for Frontend/Public APIs</ListItem>
             <ListItem>Complex data updating</ListItem>
-            <ListItem>Performance in SPAs</ListItem>
+            <ListItem>Performance in Apps</ListItem>
           </List>
         </Slide>
         <Slide transition={['slide']} bgColor="secondary" maxWidth="1920">
@@ -261,7 +275,7 @@ export default class Presentation extends React.Component {
           </Heading>
           <List textColor="primary">
             <ListItem>Single-use APIs</ListItem>
-            <ListItem>Generic Predicates (not a <code>WHERE</code> clause)</ListItem>
+            <ListItem>Generic Predicates (not a generic <code>WHERE</code> clause)</ListItem>
             <ListItem>Sites with light JS use</ListItem>
           </List>
           <Notes>
